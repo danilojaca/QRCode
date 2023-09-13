@@ -28,6 +28,7 @@ final class QrReader
 
 	public function __construct($imgSource, $sourceType = QrReader::SOURCE_TYPE_FILE, $useImagickIfAvailable = true)
 	{
+		
 		if (!in_array($sourceType, [
 			self::SOURCE_TYPE_FILE,
 			self::SOURCE_TYPE_BLOB,
@@ -44,6 +45,7 @@ final class QrReader
 				} else {
 					$image = file_get_contents($imgSource);
 					$im = imagecreatefromstring($image);
+					
 				}
 				break;
 
@@ -65,6 +67,7 @@ final class QrReader
 				}
 				break;
 		}
+		
 		if ($useImagickIfAvailable && extension_loaded('imagick')) {
 			if (!$im instanceof \Imagick) {
 				throw new \InvalidArgumentException('Invalid image source.');
@@ -83,27 +86,32 @@ final class QrReader
 		$histo = new HybridBinarizer($source);
 		$this->bitmap = new BinaryBitmap($histo);
 		$this->reader = new QRCodeReader();
+		
 	}
 
 	public function decode($hints = null): void
 	{
 		try {
 			$this->result = $this->reader->decode($this->bitmap, $hints);
-		} catch (NotFoundException | FormatException | ChecksumException $e) {
+		} 
+		catch (NotFoundException | FormatException | ChecksumException $e) {
+			
 			$this->result = false;
 			$this->error = $e;
 		}
+		
 	}
 
 	public function text($hints = null)
 	{
 		$this->decode($hints);
-
+		
 		if ($this->result !== false && method_exists($this->result, 'toString')) {
 			return $this->result->toString();
 		}
 
 		return $this->result;
+		
 	}
 
 	public function getResult(): bool|Result|null

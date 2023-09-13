@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
   <head>
@@ -9,6 +10,7 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head>
   <body class="bg">
     <div class="container pt-5">
@@ -26,7 +28,7 @@
 					    <input type="file" class="form-control" name="qrimage" id="qrimage"  required>
             </div>
             <div class="col-md-6 offset-md-5">
-					    <button type="submit" class="btn btn-outline-primary" >Ler QRCode</button>
+					    <button type="submit" name="button" class="btn btn-outline-primary" >Ler QRCode</button>
             </div>
           </form>
 		    </div>
