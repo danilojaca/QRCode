@@ -9,7 +9,6 @@ $imageType = $_FILES['qrimage']['type'];
 $imageType = explode("/",$imageType);
 $imageType = $imageType[1];
 $imagemtemp = $_FILES['qrimage']['tmp_name'];
-$is_image = getimagesize($imagemtemp);
 move_uploaded_file($imagemtemp, $imageFile);
 
 list($width_orig, $height_orig) = getimagesize($imageFile);
